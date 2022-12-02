@@ -57,7 +57,7 @@ public class StudentImplement implements StudentService {
 	}
 
 	@Override
-	public StudentWithCollege getById(long id) throws Exception {
+	public StudentWithCollege getByIdWithCollege(long id) throws Exception {
 		Optional<Student> exist = repo.findById(id);
 
 		if (exist.isPresent()) {
@@ -74,12 +74,14 @@ public class StudentImplement implements StudentService {
 	@Override
 	public Student add(Student std, MultipartFile profile) throws Exception {
 		try {
-			String filename = new Date().getTime() + profile.getOriginalFilename();
+			if(profile!=null)
+			{
+				String filename = new Date().getTime() + profile.getOriginalFilename();
+				Path fileStorage = get(UPLOAD_PATH, filename).toAbsolutePath().normalize();
+				copy(profile.getInputStream(), fileStorage, REPLACE_EXISTING);
 
-			Path fileStorage = get(UPLOAD_PATH, filename).toAbsolutePath().normalize();
-			copy(profile.getInputStream(), fileStorage, REPLACE_EXISTING);
-
-			std.setFilename(filename);
+				std.setFilename(filename);
+			}
 			Student save = repo.save(std);
 			return save;
 		} catch (Exception e) {
@@ -88,12 +90,20 @@ public class StudentImplement implements StudentService {
 	}
 
 	@Override
-	public Student edit(long id, Student std) throws Exception {
+	public Student edit(long id, Student std, MultipartFile file) throws Exception {
 		try {
 			Optional<Student> exist = repo.findById(id);
-
 			if (exist.isPresent()) {
 				Student before = exist.get();
+				
+				if(file!=null)
+				{
+					String filename = new Date().getTime() + file.getOriginalFilename();
+					Path fileStorage = get(UPLOAD_PATH, filename).toAbsolutePath().normalize();
+					copy(file.getInputStream(), fileStorage, REPLACE_EXISTING);
+
+					before.setFilename(filename);
+				}
 				before.setName(std.getName());
 				before.setAge(std.getAge());
 				before.setCollege_id(std.getCollege_id());
@@ -156,6 +166,22 @@ public class StudentImplement implements StudentService {
 
 		InputStream is = new FileInputStream(fullPath);
 		return is;
+	}
+
+	@Override
+	public Student getById(long id) throws Exception {
+		try {
+			Optional<Student> exist = repo.findById(id);
+
+			if (exist.isPresent()) {
+				Student std = exist.get();
+				return std;
+			} else {
+				throw new Exception("No Student Found");
+			}
+		} catch (Exception e) {
+			throw new Exception(e.getMessage());
+		}
 	}
 
 }

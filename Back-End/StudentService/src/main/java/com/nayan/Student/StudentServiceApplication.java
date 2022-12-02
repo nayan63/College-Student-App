@@ -17,8 +17,7 @@ public class StudentServiceApplication {
 
 	@Bean
 	@LoadBalanced
-	RestTemplate restTemplate()
-	{
+	RestTemplate restTemplate() {
 		return new RestTemplate();
 	}
 }

@@ -1,8 +1,10 @@
 import { useCallback, useEffect, useState } from "react";
 import { Alert, Button, Table } from "react-bootstrap"
 import useHttp from "../../Service/use-http";
+import { Link } from "react-router-dom";
 
 const ListStudent = () => {
+    var x=1;
     const [records, setRecords] = useState({});
     const [error, loading, response] = useHttp();
 
@@ -66,7 +68,7 @@ const ListStudent = () => {
                         Object.keys(records).map((data) => {
                             return (
                                 <tr key={data}>
-                                    <td>{records[data].id}</td>
+                                    <td>{x++}</td>
                                     <td>
                                         { records[data].filename!==null?<img style={{ width: '50px' }} src={'http://localhost:9000/student/file/' + records[data].filename} alt={records[data].filename} />:''}
                                     </td>
@@ -75,7 +77,7 @@ const ListStudent = () => {
                                     <td>{records[data].college}</td>
                                     <td>{records[data].branch}</td>
                                     <td>
-                                        <Button className="btn btn-warning" >Edit</Button> &nbsp;&nbsp;
+                                        <Button className="btn btn-warning" as={Link} to={'../edit/'+records[data].id}>Edit</Button> &nbsp;&nbsp;
                                         <Button 
                                             className="btn btn-danger" 
                                             onClick={(e)=>{deleteHandler(records[data].id)}}

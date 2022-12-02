@@ -63,6 +63,24 @@ const useHttp =()=>{
                 isLoading(false);
             });
         }
+        else if(method==='PUT')
+        {
+            isLoading(true);
+            await axios.put(url,body)
+            .then((res)=>{
+                action(res)
+            })
+            .catch((err)=>{
+                setError(true)
+
+                setInterval(()=>{
+                    setError(false)
+                },1000)
+            })
+            .finally(()=>{
+                isLoading(false);
+            });
+        }
     }
 
     return [error,loading,fetchData];

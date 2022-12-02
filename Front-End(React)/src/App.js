@@ -7,6 +7,7 @@ import CollegeHome from './Components/Pages/College/CollegeHome';
 import ListCollege from './Components/Pages/College/ListCollege';
 import Home from './Components/Pages/Home';
 import AddStudent from './Components/Pages/Student/AddStudent';
+import EditStudent from './Components/Pages/Student/EditStudent';
 import ListStudent from './Components/Pages/Student/ListStudent';
 import SeacrchByCollege from './Components/Pages/Student/SearchByCollege';
 import SeacrchById from './Components/Pages/Student/SearchById';
@@ -26,6 +27,7 @@ function App() {
 
           <Route path='student' element={<StudentHome />} >
             <Route path='add' element={<AddStudent />} />
+            <Route path='edit/:id' element={<EditStudent />} />
             <Route path='list' element={<ListStudent />} />
             <Route path='search-by-college' element={<SeacrchByCollege />} />
             <Route path='search-by-id' element={<SeacrchById />} />

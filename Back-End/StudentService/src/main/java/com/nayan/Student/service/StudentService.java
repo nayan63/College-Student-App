@@ -14,11 +14,12 @@ import com.nayan.Student.VO.StudentWithCollege;
 public interface StudentService {
 	
 	List<StudentWithCollege> allList() throws Exception;
-	StudentWithCollege getById(long id) throws Exception;
+	Student getById(long id) throws Exception;
 	Student add(Student std,MultipartFile profile) throws Exception;
-	Student edit(long id,Student std) throws Exception;
 	Student deleteById(long id) throws Exception;
 	List<StudentWithCollege> getByCollege(long id) throws Exception;
 	
 	InputStream getFile(String fileName) throws FileNotFoundException;
+	StudentWithCollege getByIdWithCollege(long id) throws Exception;
+	Student edit(long id, Student std, MultipartFile file) throws Exception;
 }
