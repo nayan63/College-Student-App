@@ -1,0 +1,79 @@
+.footer-cpy-rit {
+  text-align: center;
+  background-color: skyblue;
+  height: 50px;
+}
+
+.footer-cpy-rit p {
+  padding-top: 10px;
+}
+
+.main-container {
+  background-color: blanchedalmond;
+  height: fit-content;
+  min-height: 83vh;
+}
+
+.card-image {
+  height: 165px !important;
+}
+
+.card-grp {
+  margin: 5px;
+  margin-bottom: 10px;
+}
+
+.left-side {
+  float: left;
+  width: 200px;
+  background: repeating-linear-gradient(45deg, #b57ccd, transparent 100px);
+  height: 83vh;
+  overflow: hidden;
+  border: 1px solid black;
+}
+
+.left-side ul {
+  list-style: none;
+  padding: 20px;
+}
+
+.left-side ul li {
+  padding: 6px;
+  padding-left: 25px;
+  background-color: blueviolet;
+  color: aliceblue;
+  border-radius: 17px;
+  font-weight: 800;
+  font-family: math;
+  font-size: 20px;
+  margin: 5px;
+}
+
+.left-side ul a
+{
+  text-decoration: none;
+}
+
+.active {
+  color: #121112 !important;
+  font-weight: bold !important;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.right-side {
+  overflow: auto;
+  min-height: 83vh;
+  background-image: linear-gradient(45deg, #ed6ee3db, #b9ed55a1);
+  padding-left: 30px;
+  padding-top: 30px;
+}
+
+.add-form
+{
+  margin-left: 180px;
+}
+
+.list-details
+{
+  margin-right: 30px;
+}

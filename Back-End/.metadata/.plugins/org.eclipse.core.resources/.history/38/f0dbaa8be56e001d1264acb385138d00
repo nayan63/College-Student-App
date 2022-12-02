@@ -1,0 +1,63 @@
+package com.nayan.Student.Enity;
+
+import org.springframework.core.io.Resource;
+
+public class StudentImage {
+
+	private long id;
+	private String name;
+	private int age;
+	private long college_id;
+	private String branch;
+	private Resource filename;
+	public StudentImage() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public StudentImage(long id, String name, int age, long college_id, String branch, Resource resource) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.age = age;
+		this.college_id = college_id;
+		this.branch = branch;
+		this.filename = resource;
+	}
+	public long getId() {
+		return id;
+	}
+	public void setId(long id) {
+		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public int getAge() {
+		return age;
+	}
+	public void setAge(int age) {
+		this.age = age;
+	}
+	public long getCollege_id() {
+		return college_id;
+	}
+	public void setCollege_id(long college_id) {
+		this.college_id = college_id;
+	}
+	public String getBranch() {
+		return branch;
+	}
+	public void setBranch(String branch) {
+		this.branch = branch;
+	}
+	public Resource getFilename() {
+		return filename;
+	}
+	public void setFilename(Resource filename) {
+		this.filename = filename;
+	}
+	
+}

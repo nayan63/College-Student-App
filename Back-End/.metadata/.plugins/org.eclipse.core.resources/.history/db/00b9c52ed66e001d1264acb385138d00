@@ -1,0 +1,13 @@
+package com.nayan.Student.Enity;
+
+import javax.annotation.Resource;
+
+public class StudentImage {
+
+	private long id;
+	private String name;
+	private int age;
+	private long college_id;
+	private String branch;
+	private Resource filename;
+}
